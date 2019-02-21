@@ -1,0 +1,77 @@
+{
+  // Vim Mode
+  "vim.leader": " ",
+  "vim.changeWordIncludesWhitespace": true,
+  // Default replacements are global, and can be made local by adding `/g`
+  "vim.substituteGlobalFlag": true,
+  "vim.sneak": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "Z",
+        "Z"
+      ],
+      "commands": [
+        ":wq"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ]
+    },
+    {
+      "before": [
+        "j"
+      ],
+      "after": [
+        "g",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "k"
+      ],
+      "after": [
+        "g",
+        "k"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "p"
+      ],
+      "after": [
+        "p",
+        "g",
+        "v",
+        "y"
+      ]
+    }
+  ],
+  // Vanilla editor configs (at the bottom because that's where the GUI editor puts things)
+  "editor.fontFamily": "'Source Code Pro', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.tabSize": 2,
+
+  "telemetry.enableTelemetry": false,
+  "workbench.tree.indent": 16,
+  "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 100,
+  // Markdown has an override, which needs to be over ridden. 
+  // https://github.com/Microsoft/vscode/issues/45653
+  "[markdown]": {
+    "editor.wordWrap": "bounded"
+  },
+  "markdown-link-suggestions.allowFullSuggestMode": true,
+  "editor.minimap.enabled": false,
+  "vim.overrideCopy": false,
+  "vim.useCtrlKeys": false,
+}

@@ -1,0 +1,83 @@
+{
+	"name": "vscode-markdown-link-suggestions",
+	"displayName": "MarkDown Link Suggestions",
+	"description": "Suggests local files and header anchors in MarkDown links",
+	"version": "13.0.0",
+	"license": "MIT",
+	"categories": [
+		"Programming Languages",
+		"Linters"
+	],
+	"keywords": [
+		"markdown",
+		"link",
+		"intellisense",
+		"autocomplete"
+	],
+	"publisher": "TomasHubelbauer",
+	"icon": "icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/TomasHubelbauer/vscode-markdown-link-suggestions.git"
+	},
+	"engines": {
+		"vscode": "^1.31.0"
+	},
+	"activationEvents": [
+		"workspaceContains:**/*.md",
+		"onLanguage:markdown"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"configuration": [
+			{
+				"title": "markdown-link-suggestions",
+				"properties": {
+					"markdown-link-suggestions.allowFullSuggestMode": {
+						"type": "boolean",
+						"default": false
+					},
+					"markdown-link-suggestions.allowSuggestionsForHeaders": {
+						"type": "boolean",
+						"default": true
+					}
+				}
+			}
+		],
+		"commands": [
+			{
+				"command": "extension.createMissingFile",
+				"title": "Create Missing File"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile && npm run test:win32 && cd icon && npm install && npm run start",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"generate": "ts-node src/generateRecognizer.ts",
+		"test:win32": "set \"CODE_TESTS_PATH=%cd%/out\" && npm run compile && node ./node_modules/vscode/bin/test",
+		"test:posix": "npm run compile && CODE_TESTS_PATH=${PWD}/out node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^7.0.43",
+		"mocha-junit-reporter": "^1.18.0",
+		"ts-node": "^7.0.1",
+		"tslint": "^5.8.0",
+		"typescript": "^2.6.1",
+		"vscode": "^1.1.29"
+	},
+	"dependencies": {
+		"@types/fs-extra": "^5.0.2",
+		"fs-extra": "^6.0.0",
+		"markdown-dom": "^0.0.5",
+		"vscode-extension-telemetry": "0.0.18"
+	},
+	"__metadata": {
+		"id": "70834ec6-eaa4-4f37-8ddf-c5bfec768a8e",
+		"publisherId": "870701d7-9211-4b5e-91fa-cc3687754393",
+		"publisherDisplayName": "Tomas Hubelbauer"
+	}
+}
